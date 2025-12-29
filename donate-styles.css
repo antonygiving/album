@@ -1,0 +1,297 @@
+.donate-page {
+    min-height: 100vh;
+    padding: 120px 20px 80px;
+    position: relative;
+    z-index: 2;
+}
+
+.donate-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.donate-header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.donate-header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+    color: var(--black);
+}
+
+.donate-header p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.9;
+    line-height: 1.8;
+}
+
+.donation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.donation-card {
+    padding: 35px;
+    text-align: center;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.6s ease-out backwards;
+}
+
+.donation-card:nth-child(1) { animation-delay: 0.1s; }
+.donation-card:nth-child(2) { animation-delay: 0.2s; }
+.donation-card:nth-child(3) { animation-delay: 0.3s; }
+.donation-card:nth-child(4) { animation-delay: 0.4s; }
+
+.donation-card:hover {
+    transform: translateY(-10px);
+    background: rgba(232, 220, 196, 0.25);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+}
+
+.donation-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.donation-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.donation-card p {
+    margin-bottom: 25px;
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.donate-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.custom-donation {
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeInUp 0.8s ease-out 0.5s backwards;
+}
+
+.custom-donation h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.custom-donation > p {
+    margin-bottom: 35px;
+    opacity: 0.8;
+}
+
+.suggested-amounts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.amount-option {
+    padding: 25px 15px;
+    background: rgba(232, 220, 196, 0.1);
+    border: 2px solid var(--glass-border);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.amount-option:hover {
+    background: rgba(244, 208, 63, 0.15);
+    border-color: var(--gold);
+    transform: scale(1.05);
+}
+
+.amount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 8px;
+}
+
+.amount-option p {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin: 0;
+}
+
+.why-support {
+    padding: 40px;
+    margin-bottom: 40px;
+    animation: fadeInUp 0.8s ease-out 0.6s backwards;
+}
+
+.why-support h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+
+.support-reasons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+}
+
+.reason {
+    text-align: center;
+}
+
+.reason-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.reason h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.reason p {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.thank-you-card {
+    padding: 50px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(244, 208, 63, 0.1) 0%, rgba(232, 220, 196, 0.15) 100%);
+    margin-bottom: 40px;
+    animation: fadeInUp 0.8s ease-out 0.7s backwards;
+}
+
+.thank-you-card h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+.thank-you-card p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto 20px;
+    opacity: 0.9;
+}
+
+.signature {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.8rem !important;
+    color: var(--gold);
+    margin-top: 30px !important;
+}
+
+.alternative-support {
+    padding: 40px;
+    animation: fadeInUp 0.8s ease-out 0.8s backwards;
+}
+
+.alternative-support h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.alt-support-options {
+    display: grid;
+    gap: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.alt-option {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: rgba(232, 220, 196, 0.1);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.alt-option:hover {
+    background: rgba(232, 220, 196, 0.2);
+    transform: translateX(10px);
+}
+
+.alt-option span {
+    font-size: 2rem;
+    min-width: 40px;
+    text-align: center;
+}
+
+.alt-option p {
+    margin: 0;
+    flex: 1;
+    line-height: 1.6;
+}
+
+.alt-option a {
+    color: var(--gold);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.alt-option a:hover {
+    color: var(--gold-light);
+}
+
+@media (max-width: 768px) {
+    .donate-header h1 {
+        font-size: 3rem;
+    }
+
+    .donation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .suggested-amounts {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .support-reasons {
+        grid-template-columns: 1fr;
+    }
+
+    .thank-you-card {
+        padding: 30px;
+    }
+
+    .alt-option {
+        flex-direction: column;
+        text-align: center;
+    }
+}

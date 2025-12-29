@@ -1,0 +1,857 @@
+:root {
+    --gold: #D4AF37;
+    --gold-light: #F4D03F;
+    --cream: #E8DCC4;
+    --cream-dark: #D4C5A9;
+    --black: #1A1A1A;
+    --white: #F5F5DC;
+    --glass-bg: rgba(232, 220, 196, 0.1);
+    --glass-border: rgba(212, 175, 55, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    background: linear-gradient(135deg, #F4D03F 0%, #E8DCC4 50%, #D4C5A9 100%);
+    background-attachment: fixed;
+    color: var(--black);
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(244, 208, 63, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="3.5" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="0.05"/></svg>');
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+}
+
+/* Navigation */
+.nav-glass {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    z-index: 1000;
+    animation: slideDown 0.8s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.nav-container {
+    background: rgba(232, 220, 196, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--black);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--black);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 20px 80px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.album-cover-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 40px;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.album-cover {
+    width: 400px;
+    height: 400px;
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(212, 175, 55, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.album-cover:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+.album-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(244, 208, 63, 0.4) 0%, transparent 70%);
+    z-index: -1;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+.album-title {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 4rem;
+    margin-bottom: 10px;
+    color: var(--black);
+    text-shadow: 3px 3px 0px rgba(212, 175, 55, 0.3);
+    animation: slideIn 0.8s ease-out 0.2s backwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.artist-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 10px;
+    animation: slideIn 0.8s ease-out 0.3s backwards;
+}
+
+.album-subtitle {
+    font-size: 1.1rem;
+    color: var(--black);
+    opacity: 0.8;
+    margin-bottom: 40px;
+    animation: slideIn 0.8s ease-out 0.4s backwards;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    animation: slideIn 0.8s ease-out 0.5s backwards;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    color: var(--black);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.6);
+}
+
+.btn-secondary {
+    background: rgba(232, 220, 196, 0.2);
+    backdrop-filter: blur(10px);
+    color: var(--black);
+    border: 2px solid var(--glass-border);
+}
+
+.btn-secondary:hover {
+    background: rgba(232, 220, 196, 0.3);
+    transform: translateY(-3px);
+}
+
+.email-teaser {
+    display: inline-block;
+    padding: 15px 30px;
+    animation: slideIn 0.8s ease-out 0.6s backwards;
+}
+
+.email-teaser p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Glass Card Base */
+.glass-card {
+    background: rgba(232, 220, 196, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Tracks Section */
+.tracks-section {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: var(--black);
+    margin-bottom: 15px;
+    letter-spacing: 3px;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: var(--black);
+    opacity: 0.8;
+}
+
+.tracks-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    gap: 20px;
+}
+
+.track-card {
+    padding: 25px 30px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.6s ease-out backwards;
+}
+
+.track-card:nth-child(1) { animation-delay: 0.1s; }
+.track-card:nth-child(2) { animation-delay: 0.2s; }
+.track-card:nth-child(3) { animation-delay: 0.3s; }
+.track-card:nth-child(4) { animation-delay: 0.4s; }
+.track-card:nth-child(5) { animation-delay: 0.5s; }
+.track-card:nth-child(6) { animation-delay: 0.6s; }
+.track-card:nth-child(7) { animation-delay: 0.7s; }
+.track-card:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.track-card:hover {
+    transform: translateX(10px);
+    background: rgba(232, 220, 196, 0.25);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.track-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    min-width: 60px;
+}
+
+.track-info {
+    flex: 1;
+}
+
+.track-info h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.track-preview {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.track-icon {
+    font-size: 1.5rem;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.track-card:hover .track-icon {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.bonus-track {
+    border: 2px solid var(--gold);
+    background: rgba(244, 208, 63, 0.1);
+}
+
+.bonus-track .track-number {
+    color: var(--gold-light);
+}
+
+/* About Section */
+.about-section {
+    padding: 80px 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.about-card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px;
+    text-align: center;
+}
+
+.about-card h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+.about-card p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.social-links a {
+    padding: 12px 30px;
+    background: rgba(232, 220, 196, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    text-decoration: none;
+    color: var(--black);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    position: relative;
+    margin: 5% auto;
+    padding: 30px;
+    max-width: 700px;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalSlideIn 0.4s ease-out;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-content h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.modal-content p {
+    margin-bottom: 25px;
+    opacity: 0.8;
+}
+
+.close, .close-modal {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--black);
+    transition: all 0.3s ease;
+}
+
+.close:hover, .close-modal:hover {
+    color: var(--gold);
+    transform: rotate(90deg);
+}
+
+/* Tab Styles */
+.tab-btn {
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    background: rgba(232, 220, 196, 0.2);
+    backdrop-filter: blur(10px);
+    color: var(--black);
+    border: 2px solid var(--glass-border);
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    color: var(--black);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+.tab-btn:hover {
+    background: rgba(232, 220, 196, 0.3);
+    transform: translateY(-2px);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content:first-child {
+    display: block;
+}
+
+#emailForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#emailInput {
+    padding: 15px 20px;
+    border: 2px solid var(--glass-border);
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#emailInput:focus {
+    border-color: var(--gold);
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.privacy-note {
+    font-size: 0.85rem;
+    opacity: 0.6;
+    margin-top: 10px;
+}
+
+/* Track Modal Form Styles */
+#track-modal .modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid var(--gold);
+}
+
+#track-modal h3 {
+    color: var(--black);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+}
+
+#track-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+#track-form .full-width {
+    grid-column: 1 / -1;
+}
+
+#track-form div {
+    display: flex;
+    flex-direction: column;
+}
+
+#track-form label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--black);
+    font-size: 0.95rem;
+}
+
+#track-form input,
+#track-form textarea {
+    padding: 12px 16px;
+    border: 2px solid var(--glass-border);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    color: var(--black);
+}
+
+#track-form input:focus,
+#track-form textarea:focus {
+    border-color: var(--gold);
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+#track-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+#track-form button {
+    margin-top: 10px;
+    padding: 14px 30px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    color: var(--black);
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+#track-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+}
+
+/* Merch Modal Form Styles */
+#merch-modal .modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid var(--gold);
+}
+
+#merch-modal h3 {
+    color: var(--black);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+}
+
+#merch-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+#merch-form .full-width {
+    grid-column: 1 / -1;
+}
+
+#merch-form div {
+    display: flex;
+    flex-direction: column;
+}
+
+#merch-form label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--black);
+    font-size: 0.95rem;
+}
+
+#merch-form input,
+#merch-form select,
+#merch-form textarea {
+    padding: 12px 16px;
+    border: 2px solid var(--glass-border);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    color: var(--black);
+}
+
+#merch-form input:focus,
+#merch-form select:focus,
+#merch-form textarea:focus {
+    border-color: var(--gold);
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+#merch-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+#merch-form button {
+    margin-top: 10px;
+    padding: 14px 30px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    color: var(--black);
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+#merch-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 2;
+    opacity: 0.7;
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 15px;
+        font-size: 0.9rem;
+    }
+
+    .album-cover {
+        width: 280px;
+        height: 280px;
+    }
+
+    .album-title {
+        font-size: 2.5rem;
+    }
+
+    .artist-name {
+        font-size: 1.5rem;
+    }
+
+    .section-header h2 {
+        font-size: 2.5rem;
+    }
+
+    .track-card {
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .track-number {
+        font-size: 2rem;
+        min-width: 50px;
+    }
+
+    .about-card {
+        padding: 30px;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+
+    .album-cover {
+        width: 240px;
+        height: 240px;
+    }
+
+    .track-info h3 {
+        font-size: 1.2rem;
+    }
+
+    /* Modal responsive styles */
+    #track-modal .modal-content {
+        margin: 2% auto;
+        padding: 20px;
+        max-width: 95%;
+        max-height: 95vh;
+    }
+
+    #track-modal h3 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    #track-form {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    #track-form input,
+    #track-form textarea {
+        padding: 10px 12px;
+        font-size: 0.95rem;
+    }
+}

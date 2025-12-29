@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track - 24</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="track-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-glass">
+        <div class="nav-container">
+            <div class="logo">24</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#tracks">All Tracks</a>
+                <a href="merch-store.html">Merch</a>
+                <a href="donate.html">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Track Page -->
+    <section class="track-page">
+        <div class="grain-overlay"></div>
+        
+        <div class="track-container">
+            <!-- Back Button -->
+            <a href="index.html#tracks" class="back-btn glass-card">← Back to Album</a>
+
+            <!-- Track Header -->
+            <div class="track-header glass-card">
+                <div class="track-visual">
+                    <img src="album-art.png" alt="Album Art" class="track-album-art">
+                    <div class="album-glow"></div>
+                </div>
+                
+                <div class="track-details">
+                    <div class="track-meta">
+                        <span class="track-number-badge" id="trackNumber">01</span>
+                        <span class="track-artist">24</span>
+                    </div>
+                    <h1 class="track-title" id="trackTitle">Track Title</h1>
+                    <p class="track-album">From "Thank You God"</p>
+                </div>
+            </div>
+
+            <!-- Audio Player -->
+            <div class="audio-player glass-card">
+                <div class="player-info">
+                    <div class="now-playing">Now Playing</div>
+                    <div class="player-track-title" id="playerTrackTitle">Track Title</div>
+                </div>
+
+                <div class="player-controls">
+                    <button class="control-btn" id="prevBtn">⏮</button>
+                    <button class="control-btn play-btn" id="playBtn">▶</button>
+                    <button class="control-btn" id="nextBtn">⏭</button>
+                </div>
+
+                <div class="progress-container">
+                    <div class="time" id="currentTime">0:00</div>
+                    <div class="progress-bar">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                    <div class="time" id="duration">0:00</div>
+                </div>
+
+                <div class="preview-notice" id="previewNotice">
+                    <p>🔒 Preview: First 30 seconds | <a href="#" onclick="showEmailModal(); return false;">Unlock full track</a></p>
+                </div>
+
+                <audio id="audioPlayer" preload="metadata">
+                    <!-- Audio source will be set dynamically -->
+                    <source src="" type="audio/mpeg">
+                </audio>
+            </div>
+
+            <!-- Track Story -->
+            <div class="track-story glass-card">
+                <h2>The Story</h2>
+                <p id="trackStory">Loading track information...</p>
+            </div>
+
+            <!-- Streaming Links -->
+            <div class="streaming-links glass-card">
+                <h3>Listen on Your Platform</h3>
+                <div class="platform-buttons">
+                    <a href="#" class="platform-btn" id="spotifyLink" target="_blank">
+                        <span class="platform-icon">🎵</span>
+                        Spotify
+                    </a>
+                    <a href="#" class="platform-btn" id="appleMusicLink" target="_blank">
+                        <span class="platform-icon">🎵</span>
+                        Apple Music
+                    </a>
+                    <a href="#" class="platform-btn" id="youtubeLink" target="_blank">
+                        <span class="platform-icon">▶️</span>
+                        YouTube
+                    </a>
+                </div>
+            </div>
+
+            <!-- Track Navigation -->
+            <div class="track-navigation">
+                <a href="#" class="nav-track-btn glass-card" id="prevTrack">
+                    <span>← Previous</span>
+                    <span class="nav-track-title"></span>
+                </a>
+                <a href="#" class="nav-track-btn glass-card" id="nextTrack">
+                    <span>Next →</span>
+                    <span class="nav-track-title"></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Modal -->
+    <div id="emailModal" class="modal">
+        <div class="modal-content glass-card">
+            <span class="close">&times;</span>
+            <h2>Unlock Full Access</h2>
+            <p>Enter your email to unlock full tracks + exclusive bonus content</p>
+            <form id="emailForm">
+                <input type="email" id="emailInput" placeholder="your@email.com" required>
+                <button type="submit" class="btn-primary">Unlock Now</button>
+            </form>
+            <p class="privacy-note">We respect your privacy. No spam, just music updates.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 24. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="track-player.js"></script>
+</body>
+</html>

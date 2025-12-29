@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Success - 24</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="merch-store-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-glass">
+        <div class="nav-container">
+            <div class="logo">24</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#tracks">Tracks</a>
+                <a href="merch-store.html">Merch</a>
+                <a href="donate.html">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Success Page -->
+    <section class="store-page">
+        <div class="grain-overlay"></div>
+
+        <div class="store-container">
+            <div class="store-header">
+                <h1>Order Confirmed!</h1>
+                <p>Thank you for your purchase</p>
+            </div>
+
+            <div class="glass-card" style="max-width: 600px; margin: 0 auto; text-align: center; padding: 40px;">
+                <div style="font-size: 4rem; margin-bottom: 20px;">✅</div>
+                <h2 style="font-family: 'Bebas Neue', sans-serif; font-size: 2rem; margin-bottom: 20px;">Your Order Has Been Placed Successfully!</h2>
+
+                <div style="background: rgba(212, 175, 55, 0.1); padding: 20px; border-radius: 15px; margin-bottom: 30px;">
+                    <p style="font-size: 1.1rem; margin-bottom: 10px;"><strong>Order ID:</strong> <span id="orderId" style="color: var(--gold); font-weight: bold;"></span></p>
+                    <p style="font-size: 0.9rem; opacity: 0.8;">Please save this order ID for your records</p>
+                </div>
+
+                <div style="text-align: left; margin-bottom: 30px;">
+                    <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; margin-bottom: 15px;">What Happens Next?</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: var(--gold); font-weight: bold;">📧</span>
+                            <span>You'll receive an email confirmation with your order details</span>
+                        </li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: var(--gold); font-weight: bold;">🚚</span>
+                            <span>Your order will be processed and shipped within 3-5 business days</span>
+                        </li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: var(--gold); font-weight: bold;">📦</span>
+                            <span>You'll receive tracking information once your order ships</span>
+                        </li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: var(--gold); font-weight: bold;">❓</span>
+                            <span>Questions? Contact us at support@24music.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="merch-store.html" class="btn-primary" style="padding: 15px 30px;">Continue Shopping</a>
+                    <a href="index.html" class="btn-secondary" style="padding: 15px 30px;">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 24. All rights reserved.</p>
+        <p>Designed with 🖤 for the culture</p>
+    </footer>
+
+    <script>
+        // Get order ID from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderId = urlParams.get('order_id') || 'N/A';
+        document.getElementById('orderId').textContent = orderId;
+    </script>
+</body>
+</html>

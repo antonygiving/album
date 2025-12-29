@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Order Tracking</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700&family=Bebas+Neue&family=Permanent+Marker&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="grain-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-glass">
+        <div class="nav-container">
+            <div class="logo">ADMIN</div>
+            <div class="nav-links">
+                <a href="index.html">Back to Site</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Section -->
+    <section id="login-section" class="hero">
+        <div class="glass-card" style="max-width: 400px; width: 100%; padding: 40px;">
+            <h2 style="font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; margin-bottom: 20px; text-align: center;">Admin Login</h2>
+            <form id="login-form">
+                <div style="margin-bottom: 20px;">
+                    <label for="password" style="display: block; margin-bottom: 8px; font-weight: 600;">Password</label>
+                    <input type="password" id="password" name="password" required style="width: 100%; padding: 15px; border: 2px solid var(--glass-border); border-radius: 10px; background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px); font-size: 1rem; outline: none;">
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">Login</button>
+            </form>
+            <div id="login-error" style="color: red; margin-top: 15px; text-align: center; display: none;"></div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard-section" class="tracks-section" style="display: none;">
+        <div class="section-header">
+            <h2>Admin Dashboard</h2>
+            <p>Manage orders, tracks, and subscribers</p>
+        </div>
+
+        <!-- Tab Buttons -->
+        <div style="text-align: center; margin-bottom: 40px;">
+            <button class="btn-secondary tab-btn active" data-tab="orders">Orders</button>
+            <button class="btn-secondary tab-btn" data-tab="tracks">Tracks</button>
+            <button class="btn-secondary tab-btn" data-tab="merch">Merch</button>
+            <button class="btn-secondary tab-btn" data-tab="subscribers">Subscribers</button>
+        </div>
+
+        <!-- Orders Tab -->
+        <div id="orders-tab" class="tab-content">
+            <!-- Filter Buttons -->
+            <div style="text-align: center; margin-bottom: 40px;">
+                <button class="btn-secondary filter-btn" data-status="all">All Orders</button>
+                <button class="btn-secondary filter-btn" data-status="pending">Pending</button>
+                <button class="btn-secondary filter-btn" data-status="paid">Paid</button>
+            </div>
+
+            <!-- Orders Table -->
+            <div class="glass-card" style="max-width: 1200px; margin: 0 auto; padding: 30px;">
+                <table id="orders-table" style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--gold);">
+                            <th style="padding: 15px; text-align: left; font-weight: 600;">Order ID</th>
+                            <th style="padding: 15px; text-align: left; font-weight: 600;">Customer Name</th>
+                            <th style="padding: 15px; text-align: left; font-weight: 600;">Email</th>
+                            <th style="padding: 15px; text-align: left; font-weight: 600;">Total</th>
+                            <th style="padding: 15px; text-align: left; font-weight: 600;">Payment Method</th>
+                            <th style="padding: 15px; text-align: left; font-weight: 600;">Status</th>
+                            <th style="padding: 15px; text-align: left; font-weight: 600;">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orders-tbody">
+                        <!-- Orders will be populated here -->
+                    </tbody>
+                </table>
+                <div id="no-orders" style="text-align: center; padding: 40px; display: none;">No orders found.</div>
+            </div>
+        </div>
+
+        <!-- Tracks Tab -->
+        <div id="tracks-tab" class="tab-content" style="display: none;">
+            <div class="glass-card" style="max-width: 1200px; margin: 0 auto; padding: 30px;">
+                <div style="margin-bottom: 20px;">
+                    <button class="btn-primary" id="add-track-btn">Add New Track</button>
+                    <button class="btn-primary" id="upload-track-btn">Upload Track with File</button>
+                </div>
+                <div id="upload-section" style="display: none; margin-bottom: 20px;">
+                    <form id="upload-track-form" enctype="multipart/form-data">
+                        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+                            <div style="flex: 1; min-width: 200px;">
+                                <label for="upload-id">ID</label>
+                                <input type="number" id="upload-id" name="id" required>
+                            </div>
+                            <div style="flex: 1; min-width: 200px;">
+                                <label for="upload-title">Title</label>
+                                <input type="text" id="upload-title" name="title" required>
+                            </div>
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <label for="upload-story">Story</label>
+                            <textarea id="upload-story" name="story" required></textarea>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+                            <div style="flex: 1; min-width: 200px;">
+                                <label for="upload-spotify">Spotify URL</label>
+                                <input type="url" id="upload-spotify" name="spotify" required>
+                            </div>
+                            <div style="flex: 1; min-width: 200px;">
+                                <label for="upload-apple">Apple Music URL</label>
+                                <input type="url" id="upload-apple" name="appleMusic" required>
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+                            <div style="flex: 1; min-width: 200px;">
+                                <label for="upload-youtube">YouTube URL</label>
+                                <input type="url" id="upload-youtube" name="youtube" required>
+                            </div>
+                            <div style="flex: 1; min-width: 200px;">
+                                <label for="upload-audio">Audio File</label>
+                                <input type="file" id="upload-audio" name="audioFile" accept="audio/*" required>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin-top: 20px;">
+                            <button type="submit" class="btn-primary">Upload Track</button>
+                            <button type="button" id="cancel-upload-btn" class="btn-secondary">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+                <table id="tracks-table" style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--gold);">
+                            <th style="padding: 15px; text-align: left; font-weight: 600;">ID</th>
+                            <th style="padding: 15px; text-align: left; font-weight: 600;">Title</th>
+                            <th style="padding: 15px; text-align: left; font-weight: 600;">Story</th>
+                            <th style="padding: 15px; text-align: left; font-weight: 600;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tracks-tbody">
+                        <!-- Tracks will be populated here -->
+                    </tbody>
+                </table>
+                <div id="no-tracks" style="text-align: center; padding: 40px; display: none;">No tracks found.</div>
+            </div>
+        </div>
+
+        <!-- Merch Tab -->
+        <div id="merch-tab" class="tab-content" style="display: none;">
+            <div class="glass-card" style="max-width: 1200px; margin: 0 auto; padding: 30px;">
+                <div style="margin-bottom: 20px;">
+                    <button class="btn-primary" id="add-merch-btn">Add New Merch Item</button>
+                </div>
+                <table id="merch-table" style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--gold);">
+                            <th style="padding: 15px; text-align: left; font-weight: 600;">ID</th>
+                            <th style="padding: 15px; text-align: left; font-weight: 600;">Name</th>
+                            <th style="padding: 15px; text-align: left; font-weight: 600;">Category</th>
+                            <th style="padding: 15px; text-align: left; font-weight: 600;">Price</th>
+                            <th style="padding: 15px; text-align: left; font-weight: 600;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="merch-tbody">
+                        <!-- Merch items will be populated here -->
+                    </tbody>
+                </table>
+                <div id="no-merch" style="text-align: center; padding: 40px; display: none;">No merch items found.</div>
+            </div>
+        </div>
+
+        <!-- Subscribers Tab -->
+        <div id="subscribers-tab" class="tab-content" style="display: none;">
+            <div class="glass-card" style="max-width: 1200px; margin: 0 auto; padding: 30px;">
+                <div style="margin-bottom: 20px;">
+                    <button class="btn-primary" id="export-subscribers-btn">Export to CSV</button>
+                </div>
+                <table id="subscribers-table" style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--gold);">
+                            <th style="padding: 15px; text-align: left; font-weight: 600;">Email</th>
+                            <th style="padding: 15px; text-align: left; font-weight: 600;">Subscribed At</th>
+                        </tr>
+                    </thead>
+                    <tbody id="subscribers-tbody">
+                        <!-- Subscribers will be populated here -->
+                    </tbody>
+                </table>
+                <div id="no-subscribers" style="text-align: center; padding: 40px; display: none;">No subscribers found.</div>
+                <div id="subscribers-loading" style="text-align: center; padding: 40px; display: none;">Loading subscribers...</div>
+                <div id="subscribers-error" style="text-align: center; padding: 40px; display: none; color: red;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Track Edit Modal -->
+    <div id="track-modal" class="modal" style="display: none;">
+        <div class="modal-content glass-card" style="max-width: 600px; width: 100%; padding: 40px; position: relative;">
+            <span class="close-modal" style="position: absolute; top: 20px; right: 20px; font-size: 28px; cursor: pointer;">&times;</span>
+            <h3 id="track-modal-title" style="margin-bottom: 20px;">Edit Track</h3>
+            <form id="track-form">
+                <input type="hidden" id="track-id" name="id">
+                <div>
+                    <label for="track-title">Title</label>
+                    <input type="text" id="track-title" name="title" required>
+                </div>
+                <div>
+                    <label for="track-spotify">Spotify URL</label>
+                    <input type="url" id="track-spotify" name="spotify" required>
+                </div>
+                <div>
+                    <label for="track-apple">Apple Music URL</label>
+                    <input type="url" id="track-apple" name="appleMusic" required>
+                </div>
+                <div>
+                    <label for="track-youtube">YouTube URL</label>
+                    <input type="url" id="track-youtube" name="youtube" required>
+                </div>
+                <div>
+                    <label for="track-audio">Audio File Path</label>
+                    <input type="text" id="track-audio" name="audioFile" required>
+                </div>
+                <div class="full-width">
+                    <label for="track-story">Story</label>
+                    <textarea id="track-story" name="story" required></textarea>
+                </div>
+                <div class="full-width" style="text-align: center;">
+                    <button type="submit">Save Track</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Merch Edit Modal -->
+    <div id="merch-modal" class="modal" style="display: none;">
+        <div class="modal-content glass-card" style="max-width: 700px; width: 100%; padding: 30px; position: relative; max-height: 90vh; overflow-y: auto;">
+            <span class="close-modal" style="position: absolute; top: 20px; right: 20px; font-size: 28px; cursor: pointer;">&times;</span>
+            <h3 id="merch-modal-title" style="margin-bottom: 20px;">Edit Merch Item</h3>
+            <form id="merch-form">
+                <input type="hidden" id="merch-id" name="id">
+                <div>
+                    <label for="merch-name">Name</label>
+                    <input type="text" id="merch-name" name="name" required>
+                </div>
+                <div>
+                    <label for="merch-category">Category</label>
+                    <select id="merch-category" name="category" required>
+                        <option value="apparel">Apparel</option>
+                        <option value="accessories">Accessories</option>
+                        <option value="collectibles">Collectibles</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="merch-price">Price ($)</label>
+                    <input type="number" id="merch-price" name="price" step="0.01" min="0" required>
+                </div>
+                <div>
+                    <label for="merch-badge">Badge (optional)</label>
+                    <input type="text" id="merch-badge" name="badge" placeholder="e.g., Best Seller, New">
+                </div>
+                <div>
+                    <label for="merch-sizes">Sizes (comma-separated)</label>
+                    <input type="text" id="merch-sizes" name="sizes" placeholder="S, M, L, XL" required>
+                </div>
+                <div>
+                    <label for="merch-colors">Colors (name:hex, comma-separated)</label>
+                    <input type="text" id="merch-colors" name="colors" placeholder="Black:#000000, White:#FFFFFF" required>
+                </div>
+                <div>
+                    <label for="merch-images">Images (comma-separated URLs)</label>
+                    <input type="text" id="merch-images" name="images" placeholder="image1.jpg, image2.jpg" required>
+                </div>
+                <div class="full-width">
+                    <label for="merch-description">Description</label>
+                    <textarea id="merch-description" name="description" required></textarea>
+                </div>
+                <div class="full-width" style="text-align: center;">
+                    <button type="submit">Save Merch Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

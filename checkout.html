@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - 24</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="merch-store-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R&currency=USD"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-glass">
+        <div class="nav-container">
+            <div class="logo">24</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#tracks">Tracks</a>
+                <a href="merch-store.html">Merch</a>
+                <a href="donate.html">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Checkout Page -->
+    <section class="checkout-page">
+        <div class="grain-overlay"></div>
+
+        <div class="checkout-container">
+            <div class="checkout-header">
+                <h1>Checkout</h1>
+                <p>Complete your purchase</p>
+            </div>
+
+            <div class="checkout-content">
+                <!-- Order Summary -->
+                <div class="order-summary glass-card">
+                    <h2>Order Summary</h2>
+                    <div id="orderItems"></div>
+                    <div class="order-total">
+                        <span>Total:</span>
+                        <span id="orderTotal">$0.00</span>
+                    </div>
+                </div>
+
+                <!-- Checkout Form -->
+                <div class="checkout-form glass-card">
+                    <form id="checkoutForm">
+                        <!-- Customer Information -->
+                        <div class="form-section">
+                            <h3>Customer Information</h3>
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Shipping Address</label>
+                                <textarea id="address" name="address" rows="3" required></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Payment Method -->
+                        <div class="form-section">
+                            <h3>Payment Method</h3>
+                            <div class="payment-methods">
+                                <div class="payment-option">
+                                    <input type="radio" id="stripe" name="paymentMethod" value="stripe" checked>
+                                    <label for="stripe">Credit/Debit Card (Stripe)</label>
+                                </div>
+                                <div class="payment-option">
+                                    <input type="radio" id="paypal" name="paymentMethod" value="paypal">
+                                    <label for="paypal">PayPal</label>
+                                </div>
+                                <div class="payment-option">
+                                    <input type="radio" id="mpesa" name="paymentMethod" value="mpesa">
+                                    <label for="mpesa">M-Pesa</label>
+                                </div>
+                            </div>
+
+                            <!-- Stripe Card Element -->
+                            <div id="stripePayment" class="payment-details">
+                                <div id="card-element"></div>
+                                <div id="card-errors" role="alert"></div>
+                            </div>
+
+                            <!-- PayPal Button -->
+                            <div id="paypalPayment" class="payment-details" style="display: none;">
+                                <div id="paypal-button-container"></div>
+                            </div>
+
+                            <!-- M-Pesa Phone Input -->
+                            <div id="mpesaPayment" class="payment-details" style="display: none;">
+                                <div class="form-group">
+                                    <label for="phoneNumber">M-Pesa Phone Number</label>
+                                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="254XXXXXXXXX" pattern="254[0-9]{9}">
+                                    <small>Enter your M-Pesa registered phone number (Kenya)</small>
+                                </div>
+                                <div id="mpesa-errors" class="error-message" style="display: none;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Error Messages -->
+                        <div id="general-errors" class="error-message" style="display: none;"></div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn-primary checkout-btn" id="submitBtn">
+                            Complete Order
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content glass-card">
+            <span class="close" onclick="closeSuccessModal()">&times;</span>
+            <h2>Order Successful!</h2>
+            <p>Your order has been placed successfully. You will receive a confirmation email shortly.</p>
+            <button class="btn-primary" onclick="window.location.href='index.html'">Continue Shopping</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 24. All rights reserved.</p>
+        <p>Designed with 🖤 for the culture</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="checkout.js"></script>
+</body>
+</html>

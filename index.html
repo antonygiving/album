@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24 - Thank You God</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-glass">
+        <div class="nav-container">
+            <div class="logo">24</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#tracks">Tracks</a>
+                <a href="#about">About</a>
+                <a href="merch-store.html">Merch</a>
+                <a href="donate.html">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="grain-overlay"></div>
+        <div class="hero-content">
+            <div class="album-cover-container">
+                <img src="album-art.png" alt="Thank You God Album Cover" class="album-cover">
+                <div class="album-glow"></div>
+            </div>
+            <h1 class="album-title">Thank You God</h1>
+            <p class="artist-name">24</p>
+            <p class="album-subtitle">7 Tracks + 1 Exclusive Bonus</p>
+            
+            <div class="cta-buttons">
+                <button class="btn-primary" onclick="scrollToTracks()">Listen Now</button>
+                <a href="https://open.spotify.com/artist/24" target="_blank" class="btn-secondary">Spotify</a>
+                <a href="https://music.apple.com/artist/24" target="_blank" class="btn-secondary">Apple Music</a>
+            </div>
+
+            <div class="email-teaser glass-card">
+                <p>🎵 Sign up to unlock full tracks + exclusive bonus track</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tracks Section -->
+    <section id="tracks" class="tracks-section">
+        <div class="section-header">
+            <h2>The Album</h2>
+            <p>Each track tells a story. Preview 30 seconds or unlock the full experience.</p>
+        </div>
+
+        <div class="tracks-grid">
+            <!-- Track 1 -->
+            <div class="track-card glass-card" onclick="location.href='track.html?id=1'">
+                <div class="track-number">01</div>
+                <div class="track-info">
+                    <h3>NAH!</h3>
+                    <p class="track-preview">Opening statement. Setting the tone.</p>
+                </div>
+                <div class="track-icon">▶</div>
+            </div>
+
+            <!-- Track 2 -->
+            <div class="track-card glass-card" onclick="location.href='track.html?id=2'">
+                <div class="track-number">02</div>
+                <div class="track-info">
+                    <h3>PUNGUZA STRESS</h3>
+                    <p class="track-preview">Reduce the stress. Live free.</p>
+                </div>
+                <div class="track-icon">▶</div>
+            </div>
+
+            <!-- Track 3 -->
+            <div class="track-card glass-card" onclick="location.href='track.html?id=3'">
+                <div class="track-number">03</div>
+                <div class="track-info">
+                    <h3>NIKO FRESH</h3>
+                    <p class="track-preview">Feeling good. Feeling alive.</p>
+                </div>
+                <div class="track-icon">▶</div>
+            </div>
+
+            <!-- Track 4 -->
+            <div class="track-card glass-card" onclick="location.href='track.html?id=4'">
+                <div class="track-number">04</div>
+                <div class="track-info">
+                    <h3>FASHION</h3>
+                    <p class="track-preview">Drip season. Style and substance.</p>
+                </div>
+                <div class="track-icon">▶</div>
+            </div>
+
+            <!-- Track 5 -->
+            <div class="track-card glass-card" onclick="location.href='track.html?id=5'">
+                <div class="track-number">05</div>
+                <div class="track-info">
+                    <h3>FASTER,</h3>
+                    <p class="track-preview">Moving quick. Can't slow down.</p>
+                </div>
+                <div class="track-icon">▶</div>
+            </div>
+
+            <!-- Track 6 -->
+            <div class="track-card glass-card" onclick="location.href='track.html?id=6'">
+                <div class="track-number">06</div>
+                <div class="track-info">
+                    <h3>LOVE</h3>
+                    <p class="track-preview">Real talk. Real feelings.</p>
+                </div>
+                <div class="track-icon">▶</div>
+            </div>
+
+            <!-- Track 7 -->
+            <div class="track-card glass-card" onclick="location.href='track.html?id=7'">
+                <div class="track-number">07</div>
+                <div class="track-info">
+                    <h3>BOSSY</h3>
+                    <p class="track-preview">Taking charge. No apologies.</p>
+                </div>
+                <div class="track-icon">▶</div>
+            </div>
+
+            <!-- Bonus Track -->
+            <div class="track-card glass-card bonus-track" onclick="location.href='track.html?id=8'">
+                <div class="track-number">??</div>
+                <div class="track-info">
+                    <h3>BONUS TRACK</h3>
+                    <p class="track-preview">🔒 Exclusive. Full of bars. Unlock to reveal.</p>
+                </div>
+                <div class="track-icon">🎁</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="glass-card about-card">
+            <h2>About 24</h2>
+            <p>From the streets to the speakers. "Thank You God" is more than an album - it's a testimony. 7 tracks of raw emotion, truth, and gratitude, plus one exclusive bonus track for the real ones.</p>
+            <p>Each song tells a piece of the story. The struggles, the victories, the grind. This is authentic rap music for those who feel it.</p>
+            
+            <div class="social-links">
+                <a href="https://instagram.com/24" target="_blank">Instagram</a>
+                <a href="https://twitter.com/24" target="_blank">Twitter</a>
+                <a href="https://youtube.com/@24" target="_blank">YouTube</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Modal -->
+    <div id="emailModal" class="modal">
+        <div class="modal-content glass-card">
+            <span class="close">&times;</span>
+            <h2>Unlock Full Access</h2>
+            <p>Enter your email to unlock full tracks + exclusive bonus content</p>
+            <form id="emailForm">
+                <input type="email" id="emailInput" placeholder="your@email.com" required>
+                <button type="submit" class="btn-primary">Unlock Now</button>
+            </form>
+            <p class="privacy-note">We respect your privacy. No spam, just music updates.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 24. All rights reserved.</p>
+        <p>Designed with 🖤 for the culture</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
